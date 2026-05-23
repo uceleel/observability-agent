@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ObservabilityAgent</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui;background:#0a0a0f;color:#e0e0e0;padding:40px}
+h1{font-size:2.5rem;color:#00e5b0;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+.stat{background:#1a1a2e;padding:20px;border-radius:8px;border:1px solid #2a2a4e}
+.stat .num{font-size:2rem;color:#00e5b0;font-weight:bold}
+.stat .label{color:#888;margin-top:4px}
+.agents{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0}
+.agent{background:#12121f;padding:16px;border-radius:8px;border-left:3px solid #00e5b0}
+.agent h3{color:#00e5b0;font-size:1rem}
+.agent p{color:#888;font-size:0.9rem;margin-top:4px}
+pre{background:#12121f;padding:16px;border-radius:8px;overflow-x:auto;font-size:0.85rem;color:#aaa}
+</style>
+</head>
+<body>
+<h1>ObservabilityAgent</h1>
+<p style="color:#888;font-size:1.1rem">Multi-agent observability pipeline with 6 AI agents, 111 tests, real-time dashboard.</p>
+<div class="stats">
+<div class="stat"><div class="num">4,412</div><div class="label">Lines of Code</div></div>
+<div class="stat"><div class="num">111</div><div class="label">Tests</div></div>
+<div class="stat"><div class="num">6</div><div class="label">AI Agents</div></div>
+</div>
+<h2 style="color:#00e5b0;margin:32px 0 16px">Agents</h2>
+<div class="agents">
+<div class="agent"><h3>MetricCollector</h3><p>Ingest, normalize, and aggregate metrics from multiple sources</p></div>
+<div class="agent"><h3>AnomalyDetector</h3><p>Statistical anomaly detection using z-score, trend, and seasonal analysis</p></div>
+<div class="agent"><h3>AlertManager</h3><p>Alert rule evaluation with cooldown, escalation, and suppression</p></div>
+<div class="agent"><h3>LogAnalyzer</h3><p>Log pattern detection, error classification, and insight extraction</p></div>
+<div class="agent"><h3>TraceCorrelator</h3><p>Distributed trace correlation and critical path analysis</p></div>
+<div class="agent"><h3>CapacityPlanner</h3><p>Resource usage forecasting and capacity exhaustion prediction</p></div>
+</div>
+<h2 style="color:#00e5b0;margin:32px 0 16px">Components</h2>
+<ul style="list-style:none;padding:0">
+<li style="padding:6px 0;color:#aaa">RuleEngine - Multi-condition alert rules with cooldown and escalation</li>
+<li style="padding:6px 0;color:#aaa">MetricsProcessor - Real-time dashboard with 10 default widgets</li>
+<li style="padding:6px 0;color:#aaa">TopologyMapper - Service dependency mapping from traces</li>
+<li style="padding:6px 0;color:#aaa">IncidentManager - Full incident lifecycle with auto-escalation</li>
+<li style="padding:6px 0;color:#aaa">TimeSeriesStore - Efficient TS storage with aggregation and downsampling</li>
+<li style="padding:6px 0;color:#aaa">ObservabilityDatabase - In-memory DB with indexing and query API</li>
+<li style="padding:6px 0;color:#aaa">PrometheusConnector - PromQL builder + API integration</li>
+<li style="padding:6px 0;color:#aaa">DatadogConnector - Metrics, APM, and dashboard integration</li>
+</ul>
+<h2 style="color:#00e5b0;margin:32px 0 16px">Quick Start</h2>
+<pre>from src.core.orchestrator import Orchestrator
+from src.agents import *
+
+orch = Orchestrator()
+orch.register_agent("metric_collector", MetricCollectorAgent())
+orch.register_agent("anomaly_detector", AnomalyDetectorAgent())
+orch.register_agent("alert_manager", AlertManagerAgent())
+orch.register_agent("log_analyzer", LogAnalyzerAgent())
+orch.register_agent("trace_correlator", TraceCorrelatorAgent())
+orch.register_agent("capacity_planner", CapacityPlannerAgent())
+
+results = orch.run_pipeline(metrics)</pre>
+</body>
+</html>
