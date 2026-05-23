@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ObservabilityAgent — Dashboard</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:#0d1117;color:#c9d1d9;min-height:100vh}
+        .header{background:#161b22;border-bottom:1px solid #30363d;padding:20px 40px}
+        .header h1{font-size:24px;color:#58a6ff}
+        .header .sub{color:#8b949e;font-size:14px;margin-top:4px}
+        .container{max-width:1200px;margin:0 auto;padding:30px 20px}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:30px}
+        .card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:20px}
+        .card .label{font-size:12px;color:#8b949e;text-transform:uppercase;letter-spacing:1px}
+        .card .value{font-size:28px;font-weight:700;color:#58a6ff;margin-top:8px}
+        .section{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:24px;margin-bottom:20px}
+        .section h2{font-size:18px;color:#c9d1d9;margin-bottom:16px}
+        table{width:100%;border-collapse:collapse}
+        th,td{text-align:left;padding:12px;border-bottom:1px solid #21262d}
+        th{color:#8b949e;font-size:12px;text-transform:uppercase}
+        .badge{padding:4px 8px;border-radius:12px;font-size:11px;font-weight:600}
+        .badge-critical{background:#3d0000;color:#f05050}
+        .badge-warning{background:#3d3200;color:#f0c000}
+        .badge-ok{background:#1b4332;color:#40c057}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📡 ObservabilityAgent</h1>
+        <div class="sub">AI-Powered Distributed System Monitoring</div>
+    </div>
+    <div class="container">
+        <div class="grid">
+            <div class="card"><div class="label">Total Alerts</div><div class="value">{{ stats.total_alerts or 0 }}</div></div>
+            <div class="card"><div class="label">Active Alerts</div><div class="value">{{ stats.active_alerts or 0 }}</div></div>
+            <div class="card"><div class="label">Status</div><div class="value">Healthy</div></div>
+        </div>
+        <div class="section">
+            <h2>Recent Alerts</h2>
+            <table>
+                <thead><tr><th>Name</th><th>Severity</th><th>State</th><th>Value</th></tr></thead>
+                <tbody>
+                {% for alert in alerts %}
+                <tr>
+                    <td>{{ alert.name }}</td>
+                    <td><span class="badge badge-{{ alert.severity }}">{{ alert.severity }}</span></td>
+                    <td>{{ alert.state }}</td>
+                    <td>{{ "%.2f"|format(alert.value or 0) }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

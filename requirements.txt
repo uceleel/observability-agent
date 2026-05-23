@@ -1,0 +1,5 @@
+# ObservabilityAgent dependencies
+# Core (all stdlib — no external dependencies required)
+# Optional integrations:
+# requests>=2.28.0  # For Prometheus/Datadog HTTP calls
+# flask>=2.0.0      # For web dashboard server
